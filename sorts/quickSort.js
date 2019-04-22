@@ -1,3 +1,9 @@
+const swap=(arr,i,j)=>{
+  let temp=arr[i];
+  arr[i]=arr[j];
+  arr[j]=temp;
+  return arr;
+}
 const partition=(arr,l,r)=>{
   let pivot=arr[l],//选取基准元素
       left=l,
@@ -10,14 +16,10 @@ const partition=(arr,l,r)=>{
       left++;
     }
     if(left<right){
-      let temp=arr[left];
-      arr[left]=arr[right];
-      arr[right]=temp;
+      swap(arr,left,right);
     }
   }
-  let temp=arr[l];
-  arr[l]=arr[left];
-  arr[left]=temp;
+  swap(arr,l,left);
   return left;
 }
 const quickSort=(arr,l,r)=>{

@@ -18,10 +18,11 @@ const foo={
 }
 
 function Bar(name,age){
+  this.value=2;
   console.log(this.value);
   console.log(name);
   console.log(age)
 }
 const myBar=Bar.myBind(foo,'winnie');//对绑定函数的使用new 操作符时，传入的this忽略，但其他参数仍可用
-const bar1=new myBar(18);
+const bar1=new myBar(18);//undefined winnie 18
 const bar2=Bar.myBind(foo,'lm',18)();

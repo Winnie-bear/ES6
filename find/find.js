@@ -27,7 +27,7 @@ var find = function(origin) {
         orderBy:function(condition,type){
           if(condition==='userId' && type==='desc'){
             newOrigin.sort((a,b)=>{
-              return a[condition]-b[condition]<0;
+              return b[condition]-a[condition];
             })
           }
           return newOrigin;

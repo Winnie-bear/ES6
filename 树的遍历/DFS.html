@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+    <div id="left">
+      这是左孩子
+      <span id="left-left">这是左孩子的左孩子</span>
+      <span id="left-right">这是左孩子的右孩子</span>
+    </div>
+    <div id="right">
+      这是右孩子
+      <span id="right-left">这是右孩子的左孩子</span>
+      <span id="right-right">这是右孩子的右孩子</span>
+    </div>
+  </div>
+
+  <script>
+    const deepTraversal=(node) => {
+      let [nodeList, stack] = [[],[]];
+      let parent, children;
+      if (node) {
+        stack.push(node);
+        while (stack.length !== 0) {
+          parent = stack.pop();
+          nodeList.push(parent);
+          children = parent.children;
+          for (let i = children.length - 1; i >= 0; i--) { //先压入右孩子再压入左孩子
+            stack.push(children[i]);
+          }
+        }
+      }
+      return nodeList;
+    }
+    window.onload = function () {
+      let root = document.getElementById("root");
+      console.log(deepTraversal(root));
+    }
+  </script>
+</body>
+</html>
